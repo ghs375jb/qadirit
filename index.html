@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUHAMMAD ASHFAQ</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .navbar a {
+            display: block;
+            color: #333;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .button {
+            padding: 14px 40px;
+            background-color: #76a5af;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 5px;
+            width: auto;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .textbox {
+            padding: 10px;
+            width: 200px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error-message {
+            color: black;
+            margin-top: 10px;
+        }
+        #registrationFields {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="#" id="registerButton" class="button">User Register</a>
+    <div id="errorMessage" class="error-message"></div> 
+   		<label for="username">Username:</label>
+    <input type="text" id="username" class="textbox" placeholder="Enter your username">
+    <label for="password">Password:</label>
+    <input type="password" id="password" class="textbox" placeholder="Enter your password">
+    
+    <div id="registrationFields">
+        <label for="confirmPassword">Confirm Password:</label>
+        <br>
+        <input type="password" id="confirmPassword" class="textbox" placeholder="Confirm your password">
+    </div>
+    
+    <button class="button" id="loginButton">Login</button>
+</div>
+
+<script>
+    function isNumeric(value) {
+        return /^\d+$/.test(value); // Check if the input is numeric
+    }
+
+    document.getElementById('loginButton').addEventListener('click', function() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const errorMessage = document.getElementById('errorMessage');
+
+        if (isNumeric(username) || isNumeric(password) || isNumeric(confirmPassword)) {
+            errorMessage.textContent = 'Username, password, and confirm password cannot be numeric.';
+        } else if (username !== 'ahmad' || password !== 'ahmad') {
+            errorMessage.textContent = 'Username and password are incorrect.';
+        } else {
+            errorMessage.textContent = ''; // Clear any previous error message
+            alert('Login successful!'); // Placeholder for successful login
+        }
+    });
+
+    document.getElementById('registerButton').addEventListener('click', function() {
+        const registerButton = document.getElementById('registerButton');
+        registerButton.textContent = 'User Login'; // Change button text to User Login
+        document.getElementById('registrationFields').style.display = 'block'; // Show password confirmation field
+    });
+</script>
+
+</body>
+</html>
